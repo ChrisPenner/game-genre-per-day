@@ -129,7 +129,7 @@ const modifiers = [
 // 'fortress',
 // ]
 
-function generate(): string {
+export function generate(): string {
   const genre1 = choiceFrom(genres);
   var genre2 = choiceFrom(genres);
   while (genre2 === genre1) {
@@ -138,15 +138,14 @@ function generate(): string {
   const modifier = choiceFrom(modifiers);
   const article = 'aeiou'.indexOf(genre1[0]) >= 0 ? 'An' : 'A'
   // const theme = choiceFrom(themes);
-  return `${article} ${genre1} ${genre2} game ${modifier}`
+  return `${article} ${genre1} ${genre2} game ${modifier}.`
 }
 
 function choiceFrom<T>(values : T[]): T {
   return values[Math.floor(Math.random()*values.length)];
 }
 
-for (let i = 0; i < 100; i++) {
-  console.log(generate());
-}
-
+// for (let i = 0; i < 100; i++) {
+//   console.log(generate());
+// }
 
