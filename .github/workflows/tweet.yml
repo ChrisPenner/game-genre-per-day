@@ -17,3 +17,8 @@ jobs:
         uses: bahmutov/npm-install@v1.6.0
       - name: Tweet
         run: npm run tweet
+        env: 
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
