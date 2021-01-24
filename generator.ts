@@ -1,4 +1,3 @@
-// https://gist.github.com/bananu7/9252503
 const genres = [
 'action-RPG',
 'adventure',
@@ -58,6 +57,7 @@ const genres = [
 'vehicle-building',
 'walking-simulator',
 ]
+
 const modifiers = [
 'with conservation of mass and energy',
 'with a morality engine',
@@ -113,39 +113,42 @@ const modifiers = [
 'where you have to lose to win',
 ]
 
-// https://letsmakeagame.net/game-jam-theme-generator/
-// const themes = [
-// 'dystopian',
-// 'fantasy',
-// 'space',
-// 'pirate',
-// 'heist',
-// 'hacker',
-// 'cyberpunk',
-// 'steampunk',
-// 'ancient',
-// 'neanderthal',
-// 'virtual reality',
-// 'fortress',
-// ]
+const themes = [
+'dystopian',
+'fantasy',
+'space',
+'pirate',
+'heist',
+'hacker',
+'cyberpunk',
+'steampunk',
+'ancient',
+'neanderthal',
+'virtual reality',
+'fortress',
+]
 
 export function generate(): string {
   const genre1 = choiceFrom(genres);
   var genre2 = choiceFrom(genres);
+
+  // Don't want two duplicate genres
   while (genre2 === genre1) {
     genre2 = choiceFrom(genres);
   }
   const modifier = choiceFrom(modifiers);
   const article = 'aeiou'.indexOf(genre1[0]) >= 0 ? 'An' : 'A'
-  // const theme = choiceFrom(themes);
-  return `${article} ${genre1} ${genre2} game ${modifier}.`
+  return `${article} ${genre1} ${genre2} game ${modifier}.
+#gamedev`
 }
 
 function choiceFrom<T>(values : T[]): T {
   return values[Math.floor(Math.random()*values.length)];
 }
 
-// for (let i = 0; i < 100; i++) {
-//   console.log(generate());
-// }
-
+// Print some samples to console
+function test(): void {
+  for (let i = 0; i < 100; i++) {
+    console.log(generate());
+  }
+}
